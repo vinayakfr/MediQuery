@@ -7,4 +7,5 @@ spacy
 pydantic
 python-dotenv
 crewai
-langchainpydantic-settings
+langchain
+pydantic-settings
