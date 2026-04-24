@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+transformers
+torch
+scispacy
+spacy
+pydantic
+python-dotenv
+crewai
+langchainpydantic-settings

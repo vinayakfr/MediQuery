@@ -1,0 +1,11 @@
+# Global owner (fallback)
+* @vinayakfr
+
+# Frontend ownership
+/frontend/ @vinayakfr
+
+# Backend ownership
+/backend/ @vinayakfr
+
+# Specific file
+/package.json @vinayakfr
