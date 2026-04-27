@@ -9,8 +9,11 @@ import {
 } from "lucide-react";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function SubNav() {
+  const pathname = usePathname();
+
   return (
     <div className="w-70 shrink-0 h-full flex flex-col gap-6 overflow-y-auto pr-2 panel-scrollbar">
       {/* Profile */}
@@ -27,11 +30,26 @@ export function SubNav() {
       </div>
 
       {/* Projects -> Workspaces */}
-      <NavSection title="Workspaces">
-        <NavItem icon={LayoutDashboardIcon} label="Dashboard" href="/dashboard" active />
-        <NavItem icon={Library} label="Documents" href="/documents" />
-        <NavItem icon={Settings} label="Settings" href="/settings" />
-        <NavItem icon={Settings} label="About" href="/about" />
+      <NavSection title="Menu">
+        <NavItem
+          icon={LayoutDashboardIcon}
+          label="Dashboard"
+          href="/dashboard"
+          active={pathname === "/dashboard"}
+        />
+        <NavItem
+          icon={Library}
+          label="Documents"
+          href="/documents"
+          active={pathname === "/documents"}
+        />
+        <NavItem
+          icon={Settings}
+          label="Settings"
+          href="/settings"
+          active={pathname === "/settings"}
+        />
+        <NavItem icon={Settings} label="About" href="/about" active={pathname === "/about"} />
       </NavSection>
 
       {/* Documents */}
@@ -83,7 +101,7 @@ function NavItem({
   href?: string;
   variant?: "default" | "text";
 }) {
-  const isActive = active;
+  const isActive = Boolean(active);
 
   return (
     <Link
@@ -102,7 +120,7 @@ function NavItem({
         />
       )}
 
-      {!Icon && variant === "default" && <div className="w-[18px]" />}
+      {!Icon && variant === "default" && <div className="w-4.5" />}
 
       <span className="flex-1 text-left">{label}</span>
     </Link>
