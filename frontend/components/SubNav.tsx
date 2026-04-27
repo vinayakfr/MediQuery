@@ -1,11 +1,11 @@
 "use client";
 
 import {
-  CreditCard,
   Search,
-  LayoutDashboard,
   Library,
   User,
+  Settings,
+  LayoutDashboardIcon,
 } from "lucide-react";
 
 import Link from "next/link";
@@ -28,16 +28,17 @@ export function SubNav() {
 
       {/* Projects -> Workspaces */}
       <NavSection title="Workspaces">
-        <NavItem icon={LayoutDashboard} label="Dashboard" active />
-        <NavItem icon={Library} label="History" />
-        <NavItem icon={CreditCard} label="Pricing" href="/pricing" />
+        <NavItem icon={LayoutDashboardIcon} label="Dashboard" href="/dashboard" active />
+        <NavItem icon={Library} label="Documents" href="/documents" />
+        <NavItem icon={Settings} label="Settings" href="/settings" />
+        <NavItem icon={Settings} label="About" href="/about" />
       </NavSection>
 
       {/* Documents */}
 
-      <div className="flex-col items-center">
+      <div className="flex-col items-center h-[50%]">
         <h1 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">
-          Documents
+          Recent Chats
         </h1>
         <div className="flex items-center glass-panel-dark py-2 px-3 rounded-xl">
           <Search size={16} className="text-gray-400 mr-2" />

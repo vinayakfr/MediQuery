@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SubNav } from "@/components/SubNav";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -19,8 +20,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased w-screen h-screen overflow-hidden flex items-center justify-center p-4 xl:p-8`}
       >
-        <div className="w-full h-full max-w-[1600px] flex gap-4 rounded-[2rem] overflow-hidden">
-             {children}
+        <div className="w-full h-full flex gap-4 xl:gap-8 rounded-4xl overflow-hidden glass-panel p-4 xl:p-6 shadow-2xl relative">
+          <SubNav />
+          {children}
         </div>
       </body>
     </html>

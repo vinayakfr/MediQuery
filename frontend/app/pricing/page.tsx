@@ -63,14 +63,6 @@ const plans: PricingPlan[] = [
 export default function PricingPage() {
     return (
         <div className="w-full h-full flex flex-col glass-panel rounded-4xl p-6 xl:p-10 shadow-2xl overflow-y-auto panel-scrollbar">
-            {/* Back link */}
-            <Link
-                href="/"
-                className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-6 w-fit"
-            >
-                <ArrowLeft size={16} />
-                Back to Dashboard
-            </Link>
 
             {/* Header */}
             <motion.div
