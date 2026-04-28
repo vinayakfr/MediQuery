@@ -25,3 +25,45 @@ class DocumentService:
         }).execute()
 
         return result.data[0]
+
+    def get_documents(self, user_id: str):
+        result = supabase.table("documents") \
+            .select("*") \
+            .eq("user_id", user_id) \
+            .order("created_at", desc=True) \
+            .execute()
+
+        if result.data is None:
+            raise Exception(f"Fetch failed: {result}")
+
+        return result.data
+    
+    def get_download_url(self, storage_path: str):
+        res = supabase.storage.from_("user-documents").create_signed_url(
+            path=storage_path,
+            expires_in=3600
+        )
+
+        return res.get("signedURL")
+
+
+
+    def delete_document(self, document_id: str):
+
+        # get storage path
+        doc = supabase.table("documents") \
+            .select("storage_path") \
+            .eq("id", document_id) \
+            .single() \
+            .execute()
+
+        path = doc.data["storage_path"]
+
+        # delete file
+        supabase.storage.from_("user-documents").remove([path])
+
+        # delete row
+        supabase.table("documents") \
+            .delete() \
+            .eq("id", document_id) \
+            .execute()
