@@ -60,7 +60,7 @@ const plans: PricingPlan[] = [
     },
 ];
 
-export default function PricingPage() {
+export default function Page() {
     return (
         <div className="w-full h-full flex flex-col glass-panel rounded-4xl p-6 xl:p-10 shadow-2xl overflow-y-auto panel-scrollbar">
 

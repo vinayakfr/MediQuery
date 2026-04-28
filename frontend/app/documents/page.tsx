@@ -19,7 +19,7 @@ type DocumentsResponse = {
 
 const API_BASE = "http://localhost:8000";
 
-export default function DocumentsPage() {
+export default function Page() {
 	const [documents, setDocuments] = useState<DocumentRecord[]>([]);
 	const [selectedDoc, setSelectedDoc] = useState<DocumentRecord | null>(null);
 	const [loading, setLoading] = useState(true);
