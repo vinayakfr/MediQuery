@@ -16,23 +16,23 @@ export default function Page() {
         </div>
       </div>
       <div className="flex-1 glass-panel rounded-3xl p-6 relative overflow-y-scroll group">
-        <div className="flex flex-col gap-6 mb-8 max-w-4xl">
-          <div className="glass-panel-dark p-6 rounded-2xl">
+        <div className="flex flex-col gap-6 mb-8">
+          <div className="p-6 w-full">
             <h2 className="text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
               <Heart className="w-5 h-5 text-red-500" />
               Our Mission
             </h2>
-            <p className="text-gray-700 leading-relaxed text-sm">
+            <p className="text-gray-700 leading-relaxed text-sm text-justify">
               We are committed to revolutionizing healthcare through the power of multi-agent artificial intelligence. Our platform streamlines medical data processing by autonomously extracting insights, predicting condition urgency, and routing critical information to the right specialists in real-time. By augmenting the capabilities of medical professionals, we strive to reduce diagnostic errors and improve patient outcomes globally.
             </p>
           </div>
-          
-          <div className="glass-panel-dark p-6 rounded-2xl">
+
+          <div className="p-6 w-full">
             <h2 className="text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
               <Target className="w-5 h-5 text-blue-500" />
               Our Vision
             </h2>
-            <p className="text-gray-700 leading-relaxed text-sm">
+            <p className="text-gray-700 leading-relaxed text-sm text-justify">
               We envision a future where every clinical decision is supported by a localized, privacy-preserving network of AI agents. A world where vast medical histories are synthesized in seconds, giving doctors back the time they need to focus on what truly matters: human connection and compassionate care.
             </p>
           </div>

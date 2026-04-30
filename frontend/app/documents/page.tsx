@@ -175,7 +175,6 @@ export default function DocumentsPage() {
 						Structured Medical Files Synced With Your Agentic Pipeline
 					</p>
 				</div>
-				<ActionButton text="Add Document" onClick={() => setActiveTab("Upload Document")} />
 			</div>
 
 			{/* Tabs */}

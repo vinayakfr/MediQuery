@@ -137,19 +137,19 @@ export default function Dashboard() {
                     )}
                     {activeTab === "Chat" && (
                         <div className="w-full h-full flex flex-col gap-2 items-start justify-start text-gray-400 font-light">
-                            <div className="flex gap-2 w-full items-center justify-center">
+                            <div className="flex gap-2 w-full items-center justify-center glass-panel rounded-xl">
                                 <input
                                     type="text"
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                                    className="w-full glass-panel h-14 rounded-2xl px-4 text-gray-800 font-medium"
+                                    className="w-full h-14 rounded-xl px-4 text-gray-800 font-medium"
                                     placeholder="Ask something..."
                                 />
                                 <ActionButton text="Send" onClick={sendMessage} />
                             </div>
 
-                            <div className="flex-1 glass-panel w-full h-full p-4 rounded-2xl overflow-auto">
+                            <div className="flex-1 glass-panel w-full h-full p-4 rounded-xl overflow-auto">
                                 <div className="flex flex-col gap-3">
 
                                     {messages.map((msg, i) => (
