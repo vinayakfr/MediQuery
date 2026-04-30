@@ -54,7 +54,7 @@ export function SubNav() {
 
       {/* Documents */}
 
-      <div className="flex-col items-center h-[50%]">
+      <div className="flex-col items-center h-[50%] overflow-y-auto">
         <h1 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">
           Recent Chats
         </h1>
