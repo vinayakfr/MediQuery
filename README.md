@@ -26,6 +26,7 @@
 - [Why MediQuery?](#why-mediquery)
 - [Features](#features)
 - [How it works](#how-it-works)
+- [Screenshots](#screeshots)
 - [The agents](#the-agents)
 - [Models](#models)
 - [Tech stack](#tech-stack)
@@ -103,7 +104,20 @@ flowchart LR
 
 1. **Upload:** the browser sends the patient details and files to `POST /cases`. The API saves the files, detects each file's type, starts the agent graph as a background `asyncio` task, and immediately returns a case ID.
 2. **Run:** the agents update the case (statuses, routing progress, logs) as they work. The frontend polls `GET /cases/{id}/run` every 2 seconds and redraws the live view.
-3. **Report:** when the run completes, the report page fetches `GET /cases/{id}/report` (it returns **409** while the run is still in progress) and renders the summary, flags, scan findings with previews, medications and agent trail.
+3. **Report:** when the run completes, the report page fetches `GET /cases/{id}/report` (it returns **409** while the run is still in progress) and renders the summary, flags, scan findings with previews, medications, and agent trail.
+
+## Screenshots
+
+<img width="1118" height="764" alt="Screenshot 2026-09-26 at 6 53 10 PM" src="https://github.com/user-attachments/assets/507d2e20-a6a3-42d5-941e-375c744b45d9" />
+
+<img width="1456" height="818" alt="Screenshot 2026-09-28 at 1 37 29 PM" src="https://github.com/user-attachments/assets/bc2988f7-d7ba-4e3f-8f10-b536c5c32e60" />
+
+<img width="1178" height="734" alt="Screenshot 2026-09-28 at 1 37 53 PM" src="https://github.com/user-attachments/assets/7e173424-3329-428f-a537-520ee8e7ec3c" />
+
+<img width="1184" height="692" alt="Screenshot 2026-09-28 at 1 38 47 PM" src="https://github.com/user-attachments/assets/5ebcf05d-40a1-4ba1-810b-9f5ed19c9bcb" />
+
+<img width="1171" height="700" alt="Screenshot 2026-09-28 at 1 39 07 PM" src="https://github.com/user-attachments/assets/08fc59ec-8f7d-4711-9b86-4adf53987375" />
+
 
 ## The agents
 
