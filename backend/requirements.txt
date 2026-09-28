@@ -1,0 +1,24 @@
+# Web API
+fastapi>=0.141
+uvicorn[standard]>=0.54
+pydantic>=2.13
+python-multipart>=0.0.32
+
+# Agent orchestration
+langgraph>=1.2
+
+# Models
+torch>=2.14
+transformers>=5.17
+ollama>=0.6
+
+# Medical imaging
+pydicom>=3.0
+nibabel>=5.4
+numpy>=2.5
+pillow>=12.3
+
+# Documents and OCR
+pdfplumber>=0.11
+pytesseract>=0.3.13
+easyocr>=1.7

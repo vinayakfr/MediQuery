@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/*
+ * MediQuery design tokens (Tailwind v4).
+ *
+ * Every variable in @theme becomes a utility class, for example:
+ *   --color-card        → bg-card, border-card, text-card
+ *   --color-muted       → text-muted
+ *   --radius-card       → rounded-card
+ *   --font-display      → font-display
+ *   --animate-flow      → animate-flow
+ * Change a value here and the whole app follows.
+ */
+@theme {
+  /* Surfaces, from the page background up to raised rows */
+  --color-bg: #0b0c0e;
+  --color-panel: #111316;
+  --color-panel-border: #1f2226;
+  --color-card: #16181b;
+  --color-card-border: #24272c;
+  --color-raised: #1b1e22;
+  --color-sunken: #0f1113;
+  --color-terminal: #0c0d0f;
+  --color-line: #2a2e35;
+  --color-line-soft: #1e2125;
+  --color-input: #2c3036;
+  --color-outline-dim: #3a3e45;
+
+  /* Text ("ink" so we get text-ink rather than text-text) */
+  --color-ink: #f1f2f4;
+  --color-ink-soft: #d9dce1;
+  --color-label: #c9cdd3;
+  --color-muted: #a4a9b2;
+  --color-subtle: #8c929c;
+  --color-faint: #6f7580;
+
+  /* Blue accent */
+  --color-accent: #3b82f6;
+  --color-accent-strong: #2563eb; /* filled buttons: passes 4.5:1 with white text */
+  --color-accent-hover: #1d4fd8;
+  --color-accent-soft: #172b4d;
+  --color-accent-deep: #15203a;
+  --color-accent-chip: #1d3257;
+  --color-accent-text: #9cc2ff;
+  --color-accent-line: #2f4a78;
+  --color-accent-done: #3b6fd1;
+  --color-accent-flow: #60a5fa;
+  --color-link: #7db0ff;
+  --color-link-hover: #a9cbff;
+
+  /* Status */
+  --color-success: #4ade80;
+  --color-success-soft: #0f2e1d;
+  --color-success-text: #86efac;
+  --color-warning: #f59e0b;
+  --color-warning-soft: #3a2a0b;
+  --color-warning-text: #fcd34d;
+  --color-warning-surface: #221a09;
+  --color-warning-border: #4a3710;
+  --color-warning-body: #f5e3b0;
+  --color-danger: #f87171;
+  --color-danger-soft: #3a1515;
+  --color-danger-border: #5c2323;
+
+  /* One colour pair per file kind */
+  --color-xray-bg: #172b4d;
+  --color-xray: #93c5fd;
+  --color-mri-bg: #2a2254;
+  --color-mri: #c4b5fd;
+  --color-ct-bg: #0e3533;
+  --color-ct: #5eead4;
+  --color-prescription-bg: #3a2a0b;
+  --color-prescription: #fcd34d;
+
+  /* Corner radii */
+  --radius-box: 14px;
+  --radius-card: 18px;
+  --radius-panel: 22px;
+
+  /* Soft glows */
+  --shadow-glow: 0 0 16px 3px rgba(59, 130, 246, 0.55);
+  --shadow-active: 0 0 24px rgba(59, 130, 246, 0.3);
+  --shadow-cta: 0 8px 28px rgba(37, 99, 235, 0.35);
+
+  /* Travelling dashes on "flowing" connector lines */
+  --animate-flow: flow 0.8s linear infinite;
+  --animate-shimmer: shimmer 1.4s ease-in-out infinite;
+  @keyframes shimmer {
+    50% {
+      opacity: 0.45;
+    }
+  }
+  @keyframes flow {
+    to {
+      stroke-dashoffset: -28;
+    }
+  }
+}
+
+/* Fonts come from next/font in app/layout.tsx as CSS variables. */
+@theme inline {
+  --font-display: var(--font-bricolage), var(--font-dm-sans), system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+  }
+
+  a {
+    @apply text-link hover:text-link-hover;
+  }
+
+  ::placeholder {
+    @apply text-faint;
+  }
+
+  /* A visible focus ring for keyboard users everywhere. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

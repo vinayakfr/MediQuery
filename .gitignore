@@ -1,0 +1,36 @@
+# ---------- OS / editors ----------
+.DS_Store
+.vscode/
+.idea/
+
+# ---------- Secrets ----------
+.env
+.env.*
+!.env.example
+*.pem
+
+# ---------- Backend (Python) ----------
+backend/.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Uploaded patient files and generated previews: never commit these
+backend/data/
+backend/sample_previews/
+
+# ---------- Frontend (Next.js) ----------
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vercel
