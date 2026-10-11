@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 from pathlib import Path
 
@@ -33,15 +34,19 @@ app = FastAPI()
 
 graph = build_graph()
 
+app.allowd_origins = [
+    origin.strip()
+    for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+    if origin.strip()
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=app.allowd_origins,
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
-
 
 @app.get("/health")
 def health():
