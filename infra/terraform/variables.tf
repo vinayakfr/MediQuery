@@ -9,3 +9,14 @@ variable "project" {
   type        = string
   default     = "mediquery"
 }
+
+variable "my_ip_cidr" {
+  description = "Your public IP in CIDR form (x.x.x.x/32). Allowed to SSH in and reach Jenkins."
+  type        = string
+}
+
+variable "public_key_path" {
+  description = "Path to the SSH public key to install on the servers"
+  type        = string
+  default     = "~/.ssh/mediquery.pub"
+}
