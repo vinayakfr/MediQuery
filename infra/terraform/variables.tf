@@ -20,3 +20,15 @@ variable "public_key_path" {
   type        = string
   default     = "~/.ssh/mediquery.pub"
 }
+
+variable "jenkins_instance_type" {
+  description = "EC2 size for the Jenkins server"
+  type        = string
+  default     = "t3.medium"
+}
+
+variable "k8s_instance_type" {
+  description = "EC2 size for the k3s server"
+  type        = string
+  default     = "t3.xlarge"
+}
