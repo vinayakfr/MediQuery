@@ -11,6 +11,10 @@ export interface QueuedFile {
   kind: FileKind;
 }
 
+// IDs only need to be unique within this page. crypto.randomUUID() would be
+// nicer, but browsers only expose it over HTTPS or on localhost.
+let nextId = 0;
+
 /**
  * Holds the files the user has dropped on the New case screen.
  * Adding the same file twice (same name and size) is ignored.
@@ -27,7 +31,7 @@ export function useFileQueue() {
         const key = `${file.name}:${file.size}`;
         if (seen.has(key)) continue;
         seen.add(key);
-        additions.push({ id: crypto.randomUUID(), file, kind: guessFileKind(file.name) });
+        additions.push({ id: `file-${++nextId}`, file, kind: guessFileKind(file.name) });
       }
       return [...current, ...additions];
     });
