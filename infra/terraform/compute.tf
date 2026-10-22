@@ -26,6 +26,11 @@ resource "aws_instance" "jenkins" {
     http_tokens = "required"
   }
 
+  # A newer Ubuntu AMI must not replace an already configured server
+  lifecycle {
+    ignore_changes = [ami]
+  }
+
   tags = { Name = "${var.project}-jenkins" }
 }
 
@@ -44,6 +49,11 @@ resource "aws_instance" "k8s" {
 
   metadata_options {
     http_tokens = "required"
+  }
+
+  # A newer Ubuntu AMI must not replace an already configured server
+  lifecycle {
+    ignore_changes = [ami]
   }
 
   tags = { Name = "${var.project}-k8s" }

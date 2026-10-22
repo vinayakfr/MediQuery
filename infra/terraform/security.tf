@@ -24,6 +24,16 @@ resource "aws_security_group" "jenkins" {
     cidr_blocks = [var.my_ip_cidr]
   }
 
+  # A CIDR rather than the k8s security group, which would create a cycle
+  # (the k8s group already references this one for port 6443)
+  ingress {
+    description = "Private Docker registry, only from inside the subnet"
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = [aws_subnet.public.cidr_block]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0

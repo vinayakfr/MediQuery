@@ -1,0 +1,79 @@
+# One volume holds both the Hugging Face model cache and saved cases
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backend-data
+  namespace: mediquery
+spec:
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: mediquery
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          # Jenkins replaces the tag with the build number on every deploy
+          image: 10.20.1.185:5000/mediquery-backend:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: OLLAMA_HOST
+              value: http://ollama:11434
+            - name: CORS_ORIGINS
+              value: http://13.127.1.87
+          volumeMounts:
+            - name: data
+              mountPath: /models/hf
+              subPath: hf
+            - name: data
+              mountPath: /app/data
+              subPath: cases
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "1"
+              memory: 2Gi
+            limits:
+              memory: 6Gi
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: backend-data
+---
+# LoadBalancer on k3s binds port 8000 on the node itself, so the browser
+# can call http://13.127.1.87:8000 directly (the security group allows it)
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: mediquery
+spec:
+  type: LoadBalancer
+  selector:
+    app: backend
+  ports:
+    - port: 8000
+      targetPort: 8000
